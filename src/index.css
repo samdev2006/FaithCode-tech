@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+ 
+  --color-faith-dark: #1A1A1A;    /* Le noir du "FAITH" */
+  --color-faith-orange: #FF8C52;  /* Le orange du "CODE" */
+  --color-faith-blue: #8294FF;    /* Le bleu du "T" et "E" */
+  --color-faith-pink: #D471B2;    /* Le mauve/rose du "C" et "H" */
+  --color-faith-light: #F3F4F6;   /* Gris clair pour les fonds */
+  --background-image-hero: url('./src/assets/Dev.jpg');
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+}
