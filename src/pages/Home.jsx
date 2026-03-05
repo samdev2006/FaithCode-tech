@@ -1,7 +1,6 @@
-
 import { motion } from "framer-motion";
 import herobg from "../assets/herobg.jpg"
-import { duration } from "@mui/material";
+
 const Home = () => {
   return (
     <main className='min-h-screen '>

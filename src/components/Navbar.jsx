@@ -1,102 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "./common/Logo.jsx"
-
+import  Logo  from "./common/Logo.jsx"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItemStyles = `
+    relative hover:text-faith-blue font-black
+    after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
+    after:bg-faith-blue after:scale-x-0 after:origin-left 
+    after:transition-transform after:duration-300 hover:after:scale-x-100
+  `;
+
+  const menuItems = [
+    { label: "Accueil", id: "home" },
+    { label: "À propos", id: "about" },
+    { label: "Services", id: "services" },
+    { label: "Contact", id: "contact" },
+  ];
+
   return (
-    <nav className="bg-white text-faith-dark">
+    
+    <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md text-faith-dark border-b border-gray-100">
       <div className="container mx-auto flex justify-between items-center p-4">
-      <Logo  />
-       
-<ul className="hidden md:flex gap-6 font-black text-faith-dark">
-  <li>
-    <Link 
-     className="
-      relative
-      hover:text-faith-blue
-      after:absolute
-      after:left-0
-      after:-bottom-1
-      after:h-[2px]
-      after:w-full
-      after:bg-faith-blue
-      after:scale-x-0
-      after:origin-left
-      after:transition-transform
-      after:duration-300
-      hover:after:scale-x-100
+        <Logo size={35} />
 
-    "
-     to="/">
-    Accueil
-    </Link>
-  </li>
-  <li>
-    <Link 
-     className="
-      relative
-      hover:text-faith-blue
-      after:absolute
-      after:left-0
-      after:-bottom-1
-      after:h-[2px]
-      after:w-full
-      after:bg-faith-blue
-      after:scale-x-0
-      after:origin-left
-      after:transition-transform
-      after:duration-300
-      hover:after:scale-x-100
-
-    "
-        to="/about"
-        >A propos
-    </Link>
-  </li>
-  <li>
-    <Link 
-         className="
-      relative
-      hover:text-faith-blue
-      after:absolute
-      after:left-0
-      after:-bottom-1
-      after:h-[2px]
-      after:w-full
-      after:bg-faith-blue
-      after:scale-x-0
-      after:origin-left
-      after:transition-transform
-      after:duration-300
-      hover:after:scale-x-100
- 
-    "
-     to="/services"
-     >Services
-    </Link>
-     </li>
-     <li>
-    <Link      
-    className="
-      relative
-      hover:text-faith-blue
-      after:absolute
-      after:left-0
-      after:-bottom-1
-      after:h-[2px]
-      after:w-full
-      after:bg-faith-blue
-      after:scale-x-0
-      after:origin-left
-      after:transition-transform
-      after:duration-300
-      hover:after:scale-x-100
-
-    " to="/contact">Contact</Link></li>
-</ul>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-8">
+          {menuItems.map((item) => (
+            <li key={item.id}>
+              <a href={`#${item.id}`} className={navItemStyles}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
         {/* Mobile button */}
         <button
@@ -107,38 +44,31 @@ const Navbar = () => {
         </button>
       </div>
 
-{/* Mobile menu */}
-<nav
-  className={`md:hidden bg-white px-4 py-2 space-y-3
-    overflow-hidden transition-all duration-300 ease-out
-    ${isOpen ? "max-h-96 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"}
-  `}
->
-  <ul>
-    {
-      [
-        { label: "Accueil", path:"/" },
-        { label: "À propos", path:"/about" },
-        { label: "Services", path:"/services" },
-        { label: "Contact", path:"/contact" },
-      ].map((item, index) => (
-        <li
-          key={item.path}
-          className={`transform transition-all duration-300 ease-out hover:cursor-pointer  
-            ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}
-          `}
-          style={{ transitionDelay: `${index * 120}ms` }}
-          onClick={() => setIsOpen(false)}
-        >
-          <Link to={item.path}>{item.label}</Link>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
-
-
-</nav>
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden bg-white px-4 py-4 space-y-4 border-t border-gray-100
+          overflow-hidden transition-all duration-300 ease-out
+          ${isOpen ? "max-h-96 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"}
+        `}
+      >
+        <ul className="space-y-4">
+          {menuItems.map((item, index) => (
+            <li
+              key={item.id}
+              className={`transform transition-all duration-300 ease-out font-bold
+                ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}
+              `}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onClick={() => setIsOpen(false)}
+            >
+              <a href={`#${item.id}`} className="block hover:text-faith-blue">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   );
 };
 
