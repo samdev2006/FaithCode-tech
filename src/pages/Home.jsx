@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import Dev from "../assets/Dev.jpg";
 
 const Home = () => {
+  const scrollTo = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth'
+    });
+  }
+};
   return (
     <main className="min-h-screen bg-[#080519]">
       {/* Section Hero */}
@@ -43,7 +51,7 @@ const Home = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className="mt-10"
           >
-            <button className="group relative px-10 py-4 rounded-full bg-gradient-to-r from-faith-magenta via-faith-pink to-faith-violet text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(212,113,178,0.4)] hover:scale-105 active:scale-95">
+            <button onClick={() => scrollTo('contact')} className="group relative px-10 py-4 rounded-full bg-gradient-to-r from-faith-magenta via-faith-pink to-faith-violet text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(212,113,178,0.4)] hover:scale-105 active:scale-95">
               <span className="relative z-10">Commencez l'aventure</span>
             </button>
           </motion.div>
