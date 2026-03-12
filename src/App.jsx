@@ -3,10 +3,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div > 
+    <div className="bg-faith-dark min-h-screen text-white"> 
       <Navbar />
       <section id="home">
         <Home />
@@ -23,6 +24,7 @@ function App() {
       <section id="contact">
         <Contact />
       </section>
+      <Footer />
 
     </div>
   );

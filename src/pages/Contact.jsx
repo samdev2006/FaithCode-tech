@@ -2,9 +2,11 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div>
-      Contact
-    </div>
+    <section className='min-h-screen'>
+        <div className='container flex items-center'>
+
+        </div>
+    </section>
   )
 }
 

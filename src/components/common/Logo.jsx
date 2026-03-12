@@ -1,58 +1,54 @@
-import { motion } from "framer-motion";
+// src/components/common/Logo.jsx
+import React from 'react';
 
-const Logo = ( {size= 40 } ) => {
+const Logo = ({ size = 40 }) => {
   return (
-    <div className={`flex items-center gap-3 `}>
-      <svg
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-auto"
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 100 100" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className="filter drop-shadow-[0_0_8px_rgba(212,113,178,0.6)]" // Effet néon
+    >
+      <defs>
+        <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#8294FF" />   {/* Bleu/Violet */}
+          <stop offset="50%" stopColor="#D471B2" />  {/* Rose */}
+          <stop offset="100%" stopColor="#FF8C52" /> {/* Orange */}
+        </linearGradient>
+      </defs>
+      
+      {/* L'Hexagone extérieur */}
+      <path 
+        d="M50 5L89 27.5V72.5L50 95L11 72.5V27.5L50 5Z" 
+        stroke="url(#neonGradient)" 
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+      
+      {/* Le cercle/hexagone intérieur */}
+      <path 
+        d="M50 15L80 32.5V67.5L50 85L20 67.5V32.5L50 15Z" 
+        fill="#1A1535" 
+        stroke="url(#neonGradient)" 
+        strokeWidth="2"
+      />
+
+      {/* La lettre F */}
+      <text 
+        x="50%" 
+        y="52%" 
+        textAnchor="middle" 
+        dominantBaseline="middle" 
+        fill="white" 
+        fontSize="35" 
+        fontWeight="900" 
+        fontFamily="Arial, sans-serif"
       >
-        
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FF8C52" />
-            <stop offset="50%" stopColor="#8294FF" />
-            <stop offset="100%" stopColor="#D471B2" />
-          </linearGradient>
-        </defs>
-        
-        <motion.path
-          d="M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 L50 5 Z"
-          stroke="url(#logoGradient)"
-          strokeWidth="4"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
-        />
-
-        
-        <text
-          x="50"
-          y="65"
-          textAnchor="middle"
-          fill="#FF8C52"
-          fontSize="45"
-          fontWeight="bold"
-          fontFamily="Arial, sans-serif"
-        >
-          F
-        </text>
-      </svg>
-
-     
-      <div className="flex flex-col leading-none">
-        <h1 className="text-2xl font-black tracking-tighter">
-          <span className="text-faith-dark">FAITH</span>
-          <span className="text-faith-orange">CODE</span>
-          <span className="text-faith-blue">TECH</span>
-        </h1>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">
-          Construisons le digital autrement
-        </p>
-      </div>
-    </div>
+        F
+      </text>
+    </svg>
   );
 };
 
