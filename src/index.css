@@ -19,3 +19,6 @@ body {
   background-color: var(--color-faith-dark);
   color: white; 
 }
+section {
+  scroll-margin-top: 80px;
+}
